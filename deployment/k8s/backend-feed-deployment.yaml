@@ -37,8 +37,4 @@ spec:
           value: "toortoor"
         - name: POSTGRESS_USERNAME
           value: "root"
-        volumeMounts:
-        - name: aws-secret
-          mountPath: "/root/.aws/"
-          readOnly: true        
       restartPolicy: Always
