@@ -15,5 +15,5 @@ jobs:
     include:
         - stage: push_reverse_proxy
           script:
-            - docker build -t ${DOCKER_USER}/udagram-reverse-proxy .
+            - docker build -t ${DOCKER_USER}/udagram-reverse-proxy ./deployment/docker
             - docker push ${DOCKER_USER}/udagram-reverse-proxy
