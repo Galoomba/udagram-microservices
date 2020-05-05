@@ -2,10 +2,16 @@ language: minimal
 
 services: docker
 
+stages:
+    - push_reverse_proxy
+
 before_install:
   - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
   - chmod +x ./kubectl
   - sudo mv ./kubectl /usr/local/bin/kubectl
 
-push_reverse_proxy:
-  - echo ${DOCKER_USER}
+jobs:
+    include:
+        - stage: push_reverse_proxy
+          script:
+            - echo ${DOCKER_USER}
