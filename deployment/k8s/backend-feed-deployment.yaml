@@ -24,19 +24,19 @@ spec:
             cpu: "500m"                  
         env:
         - name: URL
-          value: "$URL"
+          value: "http://localhost:8100"
         - name: AWS_BUCKET
-          value: "$AWS_BUCKET"
+          value: "udagram-cbucket"
         - name: JWT_SECRET
-          value: "$JWT_SECRET"
+          value: "hello"
         - name: POSTGRESS_DB
-          value: "$POSTGRESS_DB"
+          value: "postgre"
         - name: POSTGRESS_HOST
-          value: "$POSTGRESS_HOST"
+          value: "udagram-database.cf4hqgnainiv.us-east-2.rds.amazonaws.com"
         - name: POSTGRESS_PASSWORD
-          value: "$POSTGRESS_PASSWORD"
+          value: "toortoor"
         - name: POSTGRESS_USERNAME
-          value: "$POSTGRESS_USERNAME"
+          value: "root"
         volumeMounts:
         - name: aws-secret
           mountPath: "/root/.aws/"
