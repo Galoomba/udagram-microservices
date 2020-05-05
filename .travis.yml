@@ -57,3 +57,5 @@ jobs:
           script:
             - docker build -t ${DOCKER_USER}/udagram-frontend ./frontend
             - docker push ${DOCKER_USER}/udagram-frontend
+            - kubectl apply -f ./deployment/k8s/frontend-deployment.yaml 
+            - kubectl apply -f ./deployment/k8s/frontend-service.yaml
