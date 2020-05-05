@@ -33,6 +33,9 @@ jobs:
           script:
             - docker build -t ${DOCKER_USER}/udagram-reverse-proxy ./deployment/docker
             - docker push ${DOCKER_USER}/udagram-reverse-proxy
+            - kubectl apply -f ./deployment/k8s/reverseproxy-deployment.yaml 
+            - kubectl apply -f ./deployment/k8s/reverseproxy-service.yaml
+            - kubectl get service reverseproxy
 
         - stage: push_user_service
           script:
