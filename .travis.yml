@@ -4,6 +4,9 @@ services: docker
 
 stages:
     - push_reverse_proxy
+    - push_user_service
+    - push_feeds_service
+    - push_frontend 
 
 before_install:
   - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
@@ -17,3 +20,18 @@ jobs:
           script:
             - docker build -t ${DOCKER_USER}/udagram-reverse-proxy ./deployment/docker
             - docker push ${DOCKER_USER}/udagram-reverse-proxy
+
+        - stage: push_user_service
+          script:
+            - docker build -t ${DOCKER_USER}/udagram-user-service ./user-service
+            - docker push ${DOCKER_USER}/udagram-user-service
+
+        - stage: push_feeds_service
+          script:
+            - docker build -t ${DOCKER_USER}/udagram-feeds-service ./feed-service
+            - docker push ${DOCKER_USER}/udagram-feeds-service
+
+        - stage: push_frontend
+          script:
+            - docker build -t ${DOCKER_USER}/udagram-frontend ./frontend
+            - docker push ${DOCKER_USER}/udagram-frontend
