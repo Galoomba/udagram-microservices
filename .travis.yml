@@ -41,11 +41,17 @@ jobs:
           script:
             - docker build -t ${DOCKER_USER}/udagram-user-service ./user-service
             - docker push ${DOCKER_USER}/udagram-user-service
+            - kubectl apply -f ./deployment/k8s/backend-user-deployment.yaml 
+            - kubectl apply -f ./deployment/k8s/backend-user-service.yaml
+            - kubectl get service reverseproxy
 
         - stage: push_feeds_service
           script:
             - docker build -t ${DOCKER_USER}/udagram-feeds-service ./feed-service
             - docker push ${DOCKER_USER}/udagram-feeds-service
+            - kubectl apply -f ./deployment/k8s/backend-feed-deployment.yaml 
+            - kubectl apply -f ./deployment/k8s/backend-feed-service.yaml
+            - kubectl get service reverseproxy
 
         - stage: push_frontend
           script:
