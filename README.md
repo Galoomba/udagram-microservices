@@ -49,5 +49,6 @@ ionic serve
 Ionic CLI can build the frontend into static HTML/CSS/JavaScript files. These files can be uploaded to a host to be consumed by users on the web. Build artifacts are located in `./www`. To build from source, open terminal and run:
 ```bash
 ionic build
+
 ```
 ***
